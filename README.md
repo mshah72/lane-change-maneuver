@@ -9,25 +9,25 @@ The simulation environment in SUMO is set up with a predefined road network. AVs
 ### Steps in Lane Change Maneuver
 
 #### 1. Initialize Simulation
-```
+```markdown
 - Start SUMO Simulation: Launches the SUMO environment with TraCI support.
 - Connect to TraCI Server: Establishes a connection between the Python script and TraCI to control AVs in the simulation.
 ```
 
 #### 2. Load Vehicles
-```
+```markdown
 - Add AVs: Insert autonomous vehicles into the simulation with predefined routes and characteristics.
 - Set Initial Parameters: Defines initial speeds and speed limits for each AV.
 ```
 
 #### 3. Main Simulation Loop
-```
+```markdown
 - Simulation Steps: The simulation progresses in discrete time steps.
 - Data Retrieval: At each step, the script retrieves data about each AV's position, speed, and surrounding traffic conditions using TraCI commands.
 ```
 
 #### 4. Execute Lane Management Algorithm
-```
+```markdown
 - Monitor Traffic Conditions: Collects real-time data about vehicle positions, speeds, and nearby vehicles.
 - Lane Change Decisions:
   - Safety Distance Calculations: Determines safe following distances (`dCrash` and `dResponse`) based on AV's speed and braking capabilities.
@@ -126,3 +126,5 @@ For detailed instructions, refer to the [OSMapWizard documentation](https://sumo
 ## References
 
 1. [TraCI Library Documentation](https://sumo.dlr.de/docs/TraCI.html)
+2. [If, When, and How to Perform Lane Change Maneuvers on Highways](https://ieeexplore.ieee.org/document/7637091)
+3. [Blame-Free Motion Planning in Hybrid Traffic](https://ieeexplore.ieee.org/document/10093107)
