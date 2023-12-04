@@ -1,10 +1,66 @@
 # Implementation of Blame Free Lane Change Maneuver Algorithm using SUMO simulator
 
-*****Project Description
+This project simulates autonomous vehicle (AV) behavior in a traffic environment using SUMO (Simulation of Urban MObility) and the Traffic Control Interface (TraCI). The core focus is on implementing a lane change maneuver algorithm for AVs based on real-time traffic conditions.
+
+### Overview
+
+The simulation environment in SUMO is set up with a predefined road network. AVs are loaded into the simulation, each controlled through a Python script that interacts with the SUMO environment via TraCI. The script manages each AV's decisions on when and how to change lanes safely and efficiently.
+
+### Steps in Lane Change Maneuver
+
+#### 1. Initialize Simulation
+```
+- Start SUMO Simulation: Launches the SUMO environment with TraCI support.
+- Connect to TraCI Server: Establishes a connection between the Python script and TraCI to control AVs in the simulation.
+```
+
+#### 2. Load Vehicles
+```
+- Add AVs: Insert autonomous vehicles into the simulation with predefined routes and characteristics.
+- Set Initial Parameters: Defines initial speeds and speed limits for each AV.
+```
+
+#### 3. Main Simulation Loop
+```
+- Simulation Steps: The simulation progresses in discrete time steps.
+- Data Retrieval: At each step, the script retrieves data about each AV's position, speed, and surrounding traffic conditions using TraCI commands.
+```
+
+#### 4. Execute Lane Management Algorithm
+```
+- Monitor Traffic Conditions: Collects real-time data about vehicle positions, speeds, and nearby vehicles.
+- Lane Change Decisions:
+  - Safety Distance Calculations: Determines safe following distances (`dCrash` and `dResponse`) based on AV's speed and braking capabilities.
+  - Assess Lane Availability: Checks for the presence of other vehicles (blockers and non-blockers) adjacent to the AV using `check_blockers_and_non_blockers`.
+  - Evaluate Lane Change: Considers changing lanes if it is safe and beneficial based on traffic conditions and safety distances.
+- Apply Decisions: Adjust the AV's speed or change lanes as decided by the algorithm.
+```
+
+#### 5. Update Vehicle States
+```markdown
+- Send Commands to AVs: Updates the SUMO simulation with new speed or lane change commands for each AV.
+- Continue Simulation: Advances the simulation to the next step.
+```
+
+#### 6. Monitoring and Data Collection
+```markdown
+- Data Logging: Collects data on vehicle behaviors, traffic flow, and lane change incidents throughout the simulation.
+- Performance Analysis: Monitors AV performance in terms of safety and traffic efficiency.
+```
+
+#### 7. Close Simulation
+```markdown
+- Terminate Connection: Gracefully closes the TraCI connection once the simulation is complete.
+- Data Analysis: Reviews the collected data to assess the effectiveness of the lane change algorithm.
+```
+
+### Conclusion
+
+This simulation project provides insights into how AVs can make real-time lane change decisions in a dynamic traffic environment. The algorithm prioritizes safety while maintaining traffic flow efficiency, showcasing the potential of autonomous vehicles in urban mobility.
 
 ---
 
-## Installation
+## How to install SUMO and run the script
 
 ### SUMO Installation
 
@@ -62,7 +118,7 @@ For detailed instructions, refer to the [OSMapWizard documentation](https://sumo
 ### Step 2 - Run the simulation by executing the Python script written using the TraCI library available in SUMO 
 
 1. Edit the location sumoconfig file. 
-2. Execute the Python notebook file `blaft.ipynb`.
+2. Execute the Python notebook file `lane-change-maneuver.ipynb`.
 3. Open the `.csv` file generated at the end of the simulation to see the data related to the vehicles.
 
 ---
